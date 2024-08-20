@@ -1,0 +1,26 @@
+CREATE OR REPLACE FUNCTION Nth_Fibonacci(V_NUM NUMBER)
+RETURN NUMBER IS
+
+V_FIB NUMBER:=0;
+V_A NUMBER:=0;
+V_B NUMBER:=1;
+BEGIN
+    IF V_NUM=1 THEN V_FIB:=0;
+    ELSIF V_NUM=2 THEN V_FIB:=1;
+    ELSE
+    FOR i in 3..V_NUM LOOP
+    V_FIB:=V_A+V_B;
+    V_A:=V_B;
+    V_B:=V_FIB;
+    END LOOP;
+    END IF;
+    DBMS_OUTPUT.PUT_LINE(V_FIB);
+    RETURN V_FIB;
+    END;
+
+    -- TO TEST
+DECLARE
+V_f NUMBER;
+    BEGIN
+        V_f:=NTH_FIBONACCI(10);
+        END;
